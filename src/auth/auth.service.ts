@@ -5,6 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './entities/user.entity';
 import { LoginUserDto } from './dto/login-user.dto';
+import { hashString, isHashSame } from 'src/utils/hashPassword';
 
 @Injectable()
 export class AuthService {
@@ -12,6 +13,9 @@ export class AuthService {
     @InjectRepository(User) private authRepository: Repository<User>,
   ) {}
   public async create(createUserDto: CreateUserDto) { 
+    const reqPassword = createUserDto.password;
+    const hashedpassword= await hashString(reqPassword);
+    createUserDto.password= hashedpassword
     await this.authRepository.save(createUserDto);
     return {
         message: 'User created successfully',
@@ -19,15 +23,21 @@ export class AuthService {
     }
   }
   public async login(loginAuthDto: LoginUserDto) { 
-    // await this.authRepository.save(loginAuthDto);
     const reqEmail = loginAuthDto.email;
     const reqPassword = loginAuthDto.password;
 
-    const user= await this.authRepository.findOne({where:{email: reqEmail, password: reqPassword}});
-    console.log(user, '---USER')
-    if(!user){
+    const user= await this.authRepository.findOne({where:{email: reqEmail}});
+    const isPasswordSame= await isHashSame(reqPassword, user.password);
+    // console.log(user, '---USER')
+    if(!user ){
         return {
             message: 'User not found',
+            status: 404,
+        }
+    }
+    if(user && !isPasswordSame){
+        return {
+            message: 'Password is incorrect',
             status: 404,
         }
     }
