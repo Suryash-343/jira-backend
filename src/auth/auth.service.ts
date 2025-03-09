@@ -6,11 +6,13 @@ import { Repository } from 'typeorm';
 import { User } from './entities/user.entity';
 import { LoginUserDto } from './dto/login-user.dto';
 import { hashString, isHashSame } from 'src/utils/hashPassword';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class AuthService {
   constructor(
     @InjectRepository(User) private authRepository: Repository<User>,
+    private jwtService: JwtService,
   ) {}
   public async create(createUserDto: CreateUserDto) { 
     const reqPassword = createUserDto.password;
@@ -42,7 +44,11 @@ export class AuthService {
         }
     }
 
+    const {password,createdAt, updatedAt, ...payload}= user
+    const access_token=  await this.jwtService.signAsync(payload)
+
     return {
+        access_token,
         message: 'User Logged In successfully',
         status: 201,
     }
