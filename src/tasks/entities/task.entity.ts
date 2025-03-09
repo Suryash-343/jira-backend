@@ -1,16 +1,17 @@
 import { BaseEntity, Column, CreateDateColumn, Entity, ObjectIdColumn, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Transform } from 'class-transformer';
 
-@Entity() 
+@Entity()
 export class Task extends BaseEntity {
 
   @ObjectIdColumn()
   id: Object
 
   @Column()
-  title: string; 
+  title: string;
 
   @Column()
-  description: string; 
+  description: string;
 
   @Column()
   priority: number;
@@ -20,6 +21,10 @@ export class Task extends BaseEntity {
   })
   status: string;
 
+  @Transform(value => {
+    console.log(value, '----valueuuuu')
+    return new Date(String(value))
+  })
   @Column()
   dueDate: Date;
 
@@ -31,13 +36,13 @@ export class Task extends BaseEntity {
 
   @CreateDateColumn({
     type: 'timestamp',
-    default: ()=> 'CURRENT_TIMESTAMP(6)'
+    default: () => 'CURRENT_TIMESTAMP(6)'
   })
   createdAt: Date;
 
   @UpdateDateColumn({
     type: 'timestamp',
-    default: ()=> 'CURRENT_TIMESTAMP(6)',
+    default: () => 'CURRENT_TIMESTAMP(6)',
     onUpdate: 'CURRENT_TIMESTAMP(6)'
   })
   updatedAt: Date;

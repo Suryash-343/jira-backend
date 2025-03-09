@@ -3,7 +3,6 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { getMetadataArgsStorage } from 'typeorm';
 require('dotenv').config()
-console.log(process.env)
 
 @Module({
   imports: [
@@ -17,8 +16,6 @@ console.log(process.env)
             entity.toString().toLowerCase().includes('entity'),
           );
 
-        console.log(process.env.MONGODB_CONNECTION_STRING)
-        console.log(process.env.MONGODB_DB)
         return {
           type: 'mongodb',
           url: process.env.MONGODB_CONNECTION_STRING,
