@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Req } from '@nestjs/common';
 import { TasksService } from './tasks.service';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
@@ -16,8 +16,8 @@ export class TasksController {
 
   @UseGuards(AuthGuard)
   @Get()
-  findAll() {
-    return this.tasksService.findAll();
+  findAll(@Req() req) {
+    return this.tasksService.findAll(req.user.email);
   }
 
   @Get(':id')

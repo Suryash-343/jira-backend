@@ -12,15 +12,14 @@ export class AuthGuard implements CanActivate {
     context: ExecutionContext,
   ): boolean | Promise<boolean> | Observable<boolean> {
 
-    console.log(context, '--->context', context.switchToHttp().getRequest().headers, '---->headers')
     const request = context.switchToHttp().getRequest()
     const headers = request.headers
 
     try {
 
       const access_token: any = headers && headers?.authorization && headers?.authorization?.split(' ')[1]
-      // consolae.log(access_token, '----Token')
       const decoded = this.jwtService.verify(access_token)
+
       request.user = decoded
       return true;
 
