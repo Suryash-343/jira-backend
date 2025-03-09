@@ -19,10 +19,10 @@ export class AuthController {
         return this.authService.login(loginAuthDto);
     }
 
-    @Get()
-    findAll() {
-        return this.authService.findAll();
-    }
+    // @Get()
+    // findAll() {
+    //     return this.authService.findAll();
+    // }
 
     @Get(':id')
     findOne(@Param('id') id: string) {

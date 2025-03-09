@@ -20,6 +20,18 @@ export class AuthService {
   }
   public async login(loginAuthDto: LoginUserDto) { 
     // await this.authRepository.save(loginAuthDto);
+    const reqEmail = loginAuthDto.email;
+    const reqPassword = loginAuthDto.password;
+
+    const user= await this.authRepository.findOne({where:{email: reqEmail, password: reqPassword}});
+    console.log(user, '---USER')
+    if(!user){
+        return {
+            message: 'User not found',
+            status: 404,
+        }
+    }
+
     return {
         message: 'User Logged In successfully',
         status: 201,
