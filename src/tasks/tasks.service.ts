@@ -16,7 +16,8 @@ export class TasksService {
   }
 
   async findAll(email: string) {
-    const data: any= await this.taskRepository.find({ where: { createdByEmail: email } });
+    // const data: any= await this.taskRepository.find({ where: { createdByEmail: email } });
+    const data: any= await this.taskRepository.find({ });
     const finalData= {data, total: data.length}
     return finalData
   }

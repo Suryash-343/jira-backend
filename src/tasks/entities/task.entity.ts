@@ -22,7 +22,6 @@ export class Task extends BaseEntity {
   status: string;
 
   @Transform(value => {
-    console.log(value, '----valueuuuu')
     return new Date(String(value))
   })
   @Column()
