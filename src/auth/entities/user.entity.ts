@@ -20,6 +20,12 @@ export class User extends BaseEntity {
 
   @Column()
   role: string;
+  
+  @Column()
+  managerName: string;
+
+  @Column()
+  managerEmail: string;
 
   @CreateDateColumn({
     type: 'timestamp',

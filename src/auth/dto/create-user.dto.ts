@@ -8,4 +8,6 @@ export class CreateUserDto {
     password: string;
     fullName: string;
     role: string;
+    managerName: string;
+    managerEmail: string;
 }
