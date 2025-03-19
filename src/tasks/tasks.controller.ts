@@ -20,6 +20,12 @@ export class TasksController {
   findAll(@Req() req) {
     return this.tasksService.findAll(req.user.email);
   }
+  // Temporary
+  @UseGuards(AuthGuard)
+  @Post('findAllTaskOfTeamMember')
+  findAllTaskOfTeamMember(@Body('assignedToEmail') assignedToEmail: string) {
+    return this.tasksService.findAllTaskOfTeamMember(assignedToEmail);
+  }
 
   @UseGuards(AuthGuard)
   @Post('fetchTeamMemberList')
