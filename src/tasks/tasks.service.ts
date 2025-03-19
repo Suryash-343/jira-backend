@@ -22,6 +22,12 @@ export class TasksService {
     const finalData= {data, total: data.length}
     return finalData
   }
+  async findAllTaskOfTeamMember(assignedToEmail: string) {
+    const data: any= await this.taskRepository.find({ where: { assignedToEmail } });
+    // const data: any= await this.taskRepository.find({ });
+    const finalData= {data, total: data.length}
+    return finalData
+  }
   public async fetchTeamMemberList(managerEmail: string){
     const data: any= await this.userRepository.find({where: {managerEmail}})
     const finalData= data.map(({password, ...rest})=> rest)
