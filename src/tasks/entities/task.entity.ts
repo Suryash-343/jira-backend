@@ -17,7 +17,7 @@ export class Task extends BaseEntity {
   priority: number;
 
   @Column({
-    default: 'pending',
+    default: 'todo',
   })
   status: string;
 
