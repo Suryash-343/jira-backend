@@ -7,7 +7,8 @@ import { AuthGuard } from 'src/auth.guard';
 @Controller('tasks')
 export class TasksController {
   constructor(private readonly tasksService: TasksService) {}
-
+  
+  @UseGuards(AuthGuard)
   @Post()
   create(@Body() createTaskDto: CreateTaskDto) {
     console.log(createTaskDto, '---.BODY')
@@ -18,6 +19,13 @@ export class TasksController {
   @Get()
   findAll(@Req() req) {
     return this.tasksService.findAll(req.user.email);
+  }
+
+  @UseGuards(AuthGuard)
+  @Post('fetchTeamMemberList')
+  fetchTeamMemberList(@Body('managerEmail') managerEmail: string) {
+    console.log(managerEmail, '---.BODY')
+    return this.tasksService.fetchTeamMemberList(managerEmail);
   }
 
   @Get(':id')
