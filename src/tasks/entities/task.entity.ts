@@ -17,12 +17,11 @@ export class Task extends BaseEntity {
   priority: number;
 
   @Column({
-    default: 'pending',
+    default: 'todo',
   })
   status: string;
 
   @Transform(value => {
-    console.log(value, '----valueuuuu')
     return new Date(String(value))
   })
   @Column()
@@ -32,7 +31,13 @@ export class Task extends BaseEntity {
   createdBy: string;
 
   @Column()
+  createdByEmail: string;
+
+  @Column()
   assignedTo: string;
+
+  @Column()
+  assignedToEmail: string;
 
   @CreateDateColumn({
     type: 'timestamp',
