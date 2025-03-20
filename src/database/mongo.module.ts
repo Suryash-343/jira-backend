@@ -18,8 +18,8 @@ require('dotenv').config()
 
         return {
           type: 'mongodb',
-          url: process.env.MONGODB_CONNECTION_STRING,
-          database: process.env.MONGODB_DB,
+          url: 'mongodb+srv://godofcode99:84XfZr9KFsdXJ9DH@cluster0.pwvkm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
+          database: 'personalProjects',
           entities,
           logging: true,
           autoLoadEntities: true,
