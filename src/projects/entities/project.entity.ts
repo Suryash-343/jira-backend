@@ -1,20 +1,28 @@
 import { BaseEntity, Column, CreateDateColumn, Entity, ObjectIdColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
-export class Organization extends BaseEntity {
+export class Project extends BaseEntity {
     @ObjectIdColumn()
-    _id: Object
+    id: Object
 
     @Column()
-    organizationName: string;
+    organizationId: string;
+
     @Column()
-    organizationKey: string;
+    projectName: string;
+
     @Column()
-    organizationDesc: string;
+    projectKey: string;
+
     @Column()
-    organizationAdmin: string;
+    projectDesc: string;
+
     @Column()
-    organizationProfilePic: string;
+    projectAdmin: string;
+
+    @Column()
+    projectMembers: Array<any>;
+
     @CreateDateColumn({
         type: 'timestamp',
         default: () => 'CURRENT_TIMESTAMP(6)'

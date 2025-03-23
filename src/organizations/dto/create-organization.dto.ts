@@ -5,8 +5,11 @@ export class CreateOrganizationDto {
     organizationName: string;
     @IsNotEmpty()
     organizationKey: string;
-
+    
     organizationDesc: string;
+    
+    @IsNotEmpty()
+    organizationAdmin: string;
     
     // @IsNotEmpty()
     organizationProfilePic: string;
