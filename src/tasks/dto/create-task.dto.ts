@@ -21,8 +21,8 @@ export class CreateTaskDto {
   status: string;
 
   @IsOptional()
-  @Transform(value => {
-    return new Date(String(value))
+  @Transform(({value}) => {
+    return new Date(value)
 })
   dueDate: Date;
   
