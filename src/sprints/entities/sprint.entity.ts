@@ -1,27 +1,30 @@
 import { BaseEntity, Column, CreateDateColumn, Entity, ObjectIdColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
-export class Project extends BaseEntity {
+export class Sprint extends BaseEntity {
     @ObjectIdColumn()
     _id: Object
 
     @Column()
-    organizationId: string;
+    projectId: string;
 
     @Column()
-    projectName: string;
+    name: string;
 
     @Column()
-    projectKey: string;
-
+    startDate: Date;
     @Column()
-    projectDesc: string;
-
+    endDate: Date;
     @Column()
-    projectAdmin: string;
-
+    members: Array<any>;
     @Column()
-    projectMembers: Array<any>;
+    status: string;
+    @Column()
+    sprintAdmin: string;
+    @Column()
+    description: string;
+    @Column()
+    sprintKey: string;
 
     @CreateDateColumn({
         type: 'timestamp',
