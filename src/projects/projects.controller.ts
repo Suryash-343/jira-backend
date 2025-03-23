@@ -9,6 +9,7 @@ export class ProjectsController {
 
   @Post()
   create(@Body() createProjectDto: CreateProjectDto) {
+    
     console.log('request recoeved')
     return this.projectsService.create(createProjectDto);
   }

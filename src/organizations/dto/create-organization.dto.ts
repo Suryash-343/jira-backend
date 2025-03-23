@@ -5,7 +5,7 @@ export class CreateOrganizationDto {
     organizationName: string;
     @IsNotEmpty()
     organizationKey: string;
-
+    
     organizationDesc: string;
     
     @IsNotEmpty()
