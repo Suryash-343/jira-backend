@@ -3,7 +3,7 @@ import { BaseEntity, Column, CreateDateColumn, Entity, ObjectIdColumn, UpdateDat
 @Entity()
 export class Project extends BaseEntity {
     @ObjectIdColumn()
-    id: Object
+    _id: Object
 
     @Column()
     organizationId: string;

@@ -17,9 +17,9 @@ export class SprintsService {
 
   async create(createSprintDto: CreateSprintDto) {
      console.log('totaldata: ', await this.projectRepository.find({}))
-        const orgObj=  await this.projectRepository.findOne({where: {id: new ObjectId(createSprintDto.projectId)}})
-        console.log(orgObj, '--->', createSprintDto.projectId)
-        if(!orgObj) {
+        const projObj=  await this.projectRepository.findOne({where: {_id: new ObjectId(createSprintDto.projectId)}})
+        console.log(projObj, '--->', createSprintDto.projectId)
+        if(!projObj) {
           throw new HttpException('Project not found', HttpStatus.NOT_FOUND);
         }
     return await this.sprintRepository.save(createSprintDto)
