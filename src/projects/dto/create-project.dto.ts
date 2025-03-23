@@ -1,3 +1,4 @@
+import { Transform } from "class-transformer";
 import { IsEmail, IsNotEmpty, MaxLength, MinLength } from "class-validator";
 
 export class CreateProjectDto {
@@ -19,6 +20,7 @@ export class CreateProjectDto {
 
     @IsEmail()
     @IsNotEmpty()
+    @Transform(({ value }) => value.toLowerCase())
     projectAdmin: string;
     // @IsNotEmpty()
     projectMembers: Array<any>;
