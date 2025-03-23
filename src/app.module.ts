@@ -7,9 +7,10 @@ import { AuthController } from './auth/auth.controller';
 import { AuthService } from './auth/auth.service';
 import { OrganizationsModule } from './organizations/organizations.module';
 import { ProjectsModule } from './projects/projects.module';
+import { SprintsModule } from './sprints/sprints.module';
 
 @Module({
-  imports: [TasksModule, AuthModule, OrganizationsModule, ProjectsModule],
+  imports: [TasksModule, AuthModule, OrganizationsModule, ProjectsModule, SprintsModule],
   controllers: [AppController],
   providers: [AppService],
 })
