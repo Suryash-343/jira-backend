@@ -8,6 +8,9 @@ export class CreateOrganizationDto {
 
     organizationDesc: string;
     
+    @IsNotEmpty()
+    organizationAdmin: string;
+    
     // @IsNotEmpty()
     organizationProfilePic: string;
 
