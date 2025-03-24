@@ -14,8 +14,8 @@ export class OrganizationsService {
     return await this.organizationRepository.save(createOrganizationDto)
   }
 
-  async findAll() {
-    return await this.organizationRepository.find({})
+  async findAll(email) {
+    return await this.organizationRepository.find({where: {organizationAdmin: email}})
   }
 
   findOne(id: number) {

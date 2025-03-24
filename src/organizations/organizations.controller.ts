@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Req } from '@nestjs/common';
 import { OrganizationsService } from './organizations.service';
 import { CreateOrganizationDto } from './dto/create-organization.dto';
 import { UpdateOrganizationDto } from './dto/update-organization.dto';
@@ -16,8 +16,8 @@ export class OrganizationsController {
 
   @UseGuards(AuthGuard)
   @Get()
-  findAll() {
-    return this.organizationsService.findAll();
+  findAll(@Req() req) {
+    return this.organizationsService.findAll(req.user.email);
   }
 
   @UseGuards(AuthGuard)
