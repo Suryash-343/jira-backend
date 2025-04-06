@@ -8,9 +8,10 @@ import { AuthService } from './auth/auth.service';
 import { OrganizationsModule } from './organizations/organizations.module';
 import { ProjectsModule } from './projects/projects.module';
 import { SprintsModule } from './sprints/sprints.module';
+import { MailModule } from './mail/mail.module';
 
 @Module({
-  imports: [TasksModule, AuthModule, OrganizationsModule, ProjectsModule, SprintsModule],
+  imports: [TasksModule, AuthModule, OrganizationsModule, ProjectsModule, SprintsModule, MailModule],
   controllers: [AppController],
   providers: [AppService],
 })
