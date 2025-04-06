@@ -15,11 +15,11 @@ export const mailConfig : MailerOptions = {
       from: `"No Reply" <no-reply@localhost>`,
     },
     preview: true,
-    // template: {
-    //   dir: process.cwd() + './template/',
-    //   adapter: new HandlebarsAdapter(),
-    //   options: {
-    //     strict: true,
-    //   },
-    // },
+    template: {
+      dir: process.cwd() + './template/',
+      adapter: new HandlebarsAdapter(),
+      options: {
+        strict: true,
+      },
+    },
   }

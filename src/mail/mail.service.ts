@@ -15,7 +15,7 @@ export class MailService {
         to: sendMailDto.to,
         from: sendMailDto.from,
         subject: sendMailDto.subject,
-        text: sendMailDto.content,
+        html: sendMailDto.content,
       })
       console.log(resp, '---->>', sendMailDto)
       return {
