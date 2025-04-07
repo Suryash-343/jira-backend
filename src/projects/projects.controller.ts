@@ -32,4 +32,10 @@ export class ProjectsController {
   remove(@Param('id') id: string) {
     return this.projectsService.remove(+id);
   }
+
+  @Post('inviteToProject')
+  inviteToProject(@Body('toMail') toMail: String) {
+
+    return this.projectsService.inviteToProject(toMail);
+  }
 }
