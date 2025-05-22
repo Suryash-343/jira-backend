@@ -9,9 +9,10 @@ import { OrganizationsModule } from './organizations/organizations.module';
 import { ProjectsModule } from './projects/projects.module';
 import { SprintsModule } from './sprints/sprints.module';
 import { MailModule } from './mail/mail.module';
+import { OtpServiceModule } from './otp-service/otp-service.module';
 
 @Module({
-  imports: [TasksModule, AuthModule, OrganizationsModule, ProjectsModule, SprintsModule, MailModule],
+  imports: [TasksModule, AuthModule, OrganizationsModule, ProjectsModule, SprintsModule, MailModule, OtpServiceModule],
   controllers: [AppController],
   providers: [AppService],
 })
